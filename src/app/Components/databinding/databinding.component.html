@@ -1,0 +1,132 @@
+<h3 class="text-center">Let's Learn Data Binding</h3>
+
+<div class="border p-2 m-2">
+    <div>User Name is: {{userName}}</div>
+    <div>User Name is: <span [innerHTML]="userName"></span></div>
+
+    <img src="{{img_url}}" alt="" width="250" height="300" />
+    <img [src]="img_url" alt="" width="250" height="300" class="mx-2" />
+    <img bind-src="img_url" alt="" width="250" height="300" />
+    <br />
+
+    <div class="mt-2">1-way : <input type="text" value="{{userName}}" /></div>
+    <div>1-way : <input type="text" [value]="userName" [tabindex]="1" /></div>
+    <div>1-way : <input type="text" bind-value="userName" [tabindex]="3" /></div>
+    <div>2-way : <input type="text" [(ngModel)]="userName" [tabindex]="2" /></div>
+    <div>2-way : <input type="text" bindon-ngModel="userName" /></div>
+
+    <div>
+        <button class="btn btn-primary" disabled="{{flag}}">Click Me</button>
+        <button class="btn btn-primary mx-2" [disabled]="flag">Click Me</button>
+        <button class="btn btn-primary" bind-disabled="flag">Click Me</button>
+    </div>
+
+    <div class="m-2">
+        <button class="btn btn-success" (click)="f1()">Click me</button>
+        <button class="btn btn-success mx-2" on-click="f1()">Click me</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$80</td>
+            </tr>
+            <tr>
+                <td colspan="2">Sum: $180</td> <!-- Use [attr.colspan] in Angular if dynamic -->
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="p-2 m-2 border">
+        <div>Addition Using 2-way binding</div>
+        <input [(ngModel)]="num1" />
+        <input [(ngModel)]="num2" />
+        <div>Addition of {{num1}} and {{num2}} is {{+num1 + +num2}}</div>
+    </div>
+
+    <div class="p-2 m-2 border">
+        <div>Addition using template reference variable</div>
+        <input #mybox1 id="box1" />
+        <input ref-mybox2 id="box2" />
+        <button class="btn btn-primary" (click)="addition(mybox1.value , mybox2.value)">Add</button>
+        <div>Addition result is {{addResult}}</div>
+    </div>
+    
+     <!-- Assignment 1 -->
+     <div class="p-2 m-2 border">
+        <div>Assignment-1 (Show/Hide Paragraph)</div>
+        <button (click)="togglePara()">
+          {{ showParagraph ? 'Hide' : 'Show' }} Paragraph
+        </button>
+        <p *ngIf="showParagraph">
+          This is a toggleable paragraph that appears or disappears based on the button click.
+        </p>
+      </div>
+
+    <!-- Assignment 2 -->
+    <div class="p-2 m-2 border">
+        <div>Assignment-2 (Remaining Characters)</div>
+        <textarea [(ngModel)]="message" maxlength="100"></textarea>
+        <div>Remaining: {{100 - message.length}}</div>
+    </div>
+
+    <!-- Assignment 3 -->
+    <div class="p-2 m-2 border">
+        <div>Assignment-3 (State Dropdown)</div>
+        <select [(ngModel)]="selectedState">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+        </select>
+        <p>Selected: {{selectedState}}</p>
+    </div>
+
+    <!-- Assignment 4 -->
+    <div class="p-2 m-2 border">
+        <div>Assignment-4 (Arithmetic Operations)</div>
+        <input type="number" [(ngModel)]="op1" />
+        <input type="number" [(ngModel)]="op2" />
+        <select [(ngModel)]="operator">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <div>Result: {{getResult()}}</div>
+    </div>
+
+    <!-- Assignment 5 -->
+    <div class="p-2 m-2 border">
+        <div>Assignment-5 (Toggle Input Type)</div>
+        <input [type]="showPassword ? 'text' : 'password'" />
+        <button (click)="showPassword = !showPassword">Toggle</button>
+    </div>
+    
+    <!-- Assigment 6 -->
+    <div class="p-2 m-2 border">
+        <div>Assignment-6 (Counter)</div>
+        <div>Counter: {{ counter }}</div>
+        <button (click)="increment()">Increment</button>
+        <button (click)="decrement()">Decrement</button>
+        <button (click)="reset()">Reset</button>
+      </div>
+      
+      <!-- Assignment 7 (Dark/Light Theme) -->
+      <div class="p-2 m-2 border">
+        <div>Assignment-7 (Dark/Light Theme)</div>
+        <button (click)="toggleTheme()">Toggle Theme</button>
+      </div>
+      
+      
+</div>
+
+    
