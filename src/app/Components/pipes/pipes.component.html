@@ -1,0 +1,63 @@
+<h3 class="text-center">Let's learn pipes</h3>
+<hr />
+<div class="border p-2 m-2">
+  <div>Username: {{ userName }}</div>
+  <div>ToUpperCase: {{ userName | uppercase }}</div>
+  <div>ToLowerCase: {{ userName | lowercase }}</div>
+</div>
+
+<div class="border p-2 m-2">
+  <div>Salary: {{ salary }}</div>
+  <div>Salary in USD: {{ salary | currency }}</div>
+  <div>Salary in USD: {{ salary | currency : "INR" }}</div>
+  <div>Salary in USD: {{ salary | currency : "Euro"}}</div>
+  <div>Salary in USD: {{ salary | currency : "USD"}}</div>
+
+</div>
+
+<div class="border p-2 m-2">
+    <div>DatePipe</div>
+    <div> {{today}}</div>
+    <div> {{today | date}}</div>
+    <div> {{today | date : 'longDate'}}</div>
+    <div> {{today | date : 'shortDate'}}</div>
+    <div> {{today | date : 'fullDate'}}</div>
+    
+</div>
+
+<div class="border p-2 m -2">
+    <div> key- value pipe</div>
+    @for(entry of user | keyvalue;track $index){
+        <div>{{entry.key}}---{{entry.value}}</div>
+    }
+</div>
+
+<div class = "border border-5 p-2 m-2 rounded-2">
+
+    <div> Slice Pipe:</div>
+    <div>{{ numArr }}</div>
+    <div> {{numArr | slice :2}}</div>
+    <div> {{numArr | slice : 2 : 4}}</div>
+    <div> {{numArr | slice : 2 : -1}}</div>
+</div>
+
+<div class ="border p-2 m-2">
+    <div>Remaining Characters (Custom Pipe)</div>
+    <textarea [(ngModel)] = 'msg' maxlength = "100"></textarea>
+    <div>msg : {{msg}}</div>
+    <div>Remainging Chars : {{msg | remaining :100}}</div>
+    <textarea [(ngModel)] = 'msg' maxlength = "200"></textarea>
+    <div>msg : {{msg}}</div>
+    <div>Remainging Chars : {{msg | remaining :200}}</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

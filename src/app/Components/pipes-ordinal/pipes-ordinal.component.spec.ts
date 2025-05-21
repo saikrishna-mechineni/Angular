@@ -1,22 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatabindingComponent } from './databinding.component';
+import { PipesOrdinalComponent } from './pipes-ordinal.component';
 
-
-
-
-
-describe('DatabindingComponent', () => {
-  let component: DatabindingComponent;
-  let fixture: ComponentFixture<DatabindingComponent>;
+describe('PipesOrdinalComponent', () => {
+  let component: PipesOrdinalComponent;
+  let fixture: ComponentFixture<PipesOrdinalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatabindingComponent]
+      imports: [PipesOrdinalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DatabindingComponent);
+    fixture = TestBed.createComponent(PipesOrdinalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,7 +20,4 @@ describe('DatabindingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
-  
 });

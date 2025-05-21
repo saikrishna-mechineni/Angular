@@ -1,22 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatabindingComponent } from './databinding.component';
+import { EmployeeCrudComponent } from './employee-crud.component';
 
-
-
-
-
-describe('DatabindingComponent', () => {
-  let component: DatabindingComponent;
-  let fixture: ComponentFixture<DatabindingComponent>;
+describe('EmployeeCRUDComponent', () => {
+  let component: EmployeeCrudComponent;
+  let fixture: ComponentFixture<EmployeeCrudComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatabindingComponent]
+      imports: [EmployeeCrudComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DatabindingComponent);
+    fixture = TestBed.createComponent(EmployeeCrudComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,7 +20,4 @@ describe('DatabindingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
-  
 });

@@ -1,0 +1,83 @@
+<!-- Ordinal Number Converter -->
+<div class="border p-2 m-2">
+    <h3>Ordinal Number Converter</h3>
+    <label for="numberInput">Enter a number:</label>
+    <input id="numberInput" type="number" [(ngModel)]="inputNumber" name="inputNumber" />
+    <div *ngIf="inputNumber !== null">
+      <p>Ordinal Output: <strong>{{ ordinal(inputNumber) }}</strong></p>
+    </div>
+  </div>
+  
+  <!-- Roman Number Converter -->
+  <div class="border p-2 m-2">
+    <h3>Roman Converter</h3>
+    <label for="numberInput2">Enter a number:</label>
+    <input id="numberInput2" type="number" [(ngModel)]="inputNumber2" name="inputNumber2" />
+    <div *ngIf="inputNumber2 !== null">
+      <p>Roman Output: <strong>{{ roman(inputNumber2) }}</strong></p>
+    </div>
+  </div>
+  
+  <!-- Age Calculator -->
+  <div class="border p-2 m-2">
+    <h3>Age Calculator</h3>
+    <label for="dob">Enter Date of Birth:</label>
+    <input id="dob" type="date" [(ngModel)]="dob" name="dob" />
+    <div *ngIf="dob">
+      <p>Age: <strong>{{ calculateAge(dob) }}</strong></p>
+    </div>
+  </div>
+  
+  <!-- Employee Table with CRUD & Salutation -->
+  <div class="border p-2 m-2">
+    <h3>Employee Management</h3>
+  
+    <!-- Employee Form -->
+    <form (ngSubmit)="isEditing ? updateEmployee() : addEmployee()" class="mb-3">
+      <input type="text" placeholder="Name" [(ngModel)]="newEmployee.name" name="name" required class="form-control mb-2" />
+      <select [(ngModel)]="newEmployee.gender" name="gender" required class="form-control mb-2">
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <input type="text" placeholder="Position" [(ngModel)]="newEmployee.position" name="position" required class="form-control mb-2" />
+      <button type="submit" class="btn btn-primary me-2">{{ isEditing ? 'Update' : 'Add' }}</button>
+      <button *ngIf="isEditing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+    </form>
+  
+    <!-- Employee Table -->
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Position</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employees; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ salutation(emp.name, emp.gender) }}</td>
+          <td>{{ emp.gender }}</td>
+          <td>{{ emp.position }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-primary me-1" (click)="editEmployee(i)">
+              <fa-icon [icon]="faEdit"></fa-icon>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteEmployee(i)">
+              <fa-icon [icon]="faTrashAlt"></fa-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Snackbar -->
+  <div class="snackbar" [class.show]="snackbarVisible">
+    <fa-icon *ngIf="snackbarIcon" [icon]="snackbarIcon" class="me-2"></fa-icon>
+    {{ snackbarMessage }}
+  </div>
+  
