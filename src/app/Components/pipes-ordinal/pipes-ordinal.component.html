@@ -1,3 +1,5 @@
+<!-- pipes-ordinal.component.html -->
+
 <!-- Ordinal Number Converter -->
 <div class="border p-2 m-2">
     <h3>Ordinal Number Converter</h3>
@@ -28,12 +30,32 @@
     </div>
   </div>
   
-  <!-- Employee Table with CRUD & Salutation -->
+  <!-- Employee Management -->
   <div class="border p-2 m-2">
     <h3>Employee Management</h3>
   
+    <!-- Search Section -->
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        [(ngModel)]="tempSearchText"
+        (input)="onInputChange()"
+        (keyup.enter)="performSearch()"
+        placeholder="Enter Employee ID..."
+        class="form-control"
+      />
+      <button class="btn btn-outline-primary" (click)="performSearch()">Search</button>
+    </div>
+  
+    <!-- Add Employee Button -->
+    <button class="btn btn-success mb-3"
+      (click)="showForm = true; isEditing = false; newEmployee = { id: 0, name: '', gender: '', position: '' }">
+      Add Employee
+    </button>
+  
     <!-- Employee Form -->
-    <form (ngSubmit)="isEditing ? updateEmployee() : addEmployee()" class="mb-3">
+    <form *ngIf="showForm" (ngSubmit)="isEditing ? updateEmployee() : addEmployee()" class="mb-3">
+      <input type="number" placeholder="Employee ID" [(ngModel)]="newEmployee.id" name="id" required class="form-control mb-2" />
       <input type="text" placeholder="Name" [(ngModel)]="newEmployee.name" name="name" required class="form-control mb-2" />
       <select [(ngModel)]="newEmployee.gender" name="gender" required class="form-control mb-2">
         <option value="">Select Gender</option>
@@ -42,7 +64,7 @@
       </select>
       <input type="text" placeholder="Position" [(ngModel)]="newEmployee.position" name="position" required class="form-control mb-2" />
       <button type="submit" class="btn btn-primary me-2">{{ isEditing ? 'Update' : 'Add' }}</button>
-      <button *ngIf="isEditing" type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
     </form>
   
     <!-- Employee Table -->
@@ -50,6 +72,7 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Employee ID</th>
           <th>Name</th>
           <th>Gender</th>
           <th>Position</th>
@@ -57,9 +80,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let emp of employees; let i = index">
+        <tr *ngFor="let emp of employees | filter:searchText; let i = index">
           <td>{{ i + 1 }}</td>
-          <td>{{ salutation(emp.name, emp.gender) }}</td>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name | salutation:emp.gender }}</td>
           <td>{{ emp.gender }}</td>
           <td>{{ emp.position }}</td>
           <td>
