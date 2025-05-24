@@ -1,9 +1,20 @@
 
-<div class = "text-center p-2 m-2">
+<div class = "container border border-5 p-2 m-2 text-center">
     <p>I am the Parent Component</p>
-    <div> My Own Data is {{a}}</div>
-    <div> </div>
-
+    <div>
+        My Own Data : {{a}}
+    </div>
+    <div>My Child comp data userName is: {{child1.username}}</div>
+    <div>My Address is userAddress: {{address_parent}}</div>
+    <div class="row">
+        <div class="col-sm-6 border border-5">
+            <app-child1 [a]="a" #child1></app-child1>
+        </div>
+        <div class="col-sm-6 border border-5">
+            <app-child2 [aChild2]="a" [child2UserName]="child1.username"
+            (addressEvent)="receiveDataFromChild($event)"></app-child2>
+        </div>
+    </div>
 </div>
 
 

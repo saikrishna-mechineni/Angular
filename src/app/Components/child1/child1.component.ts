@@ -4,8 +4,11 @@ import { Component } from '@angular/core';
   selector: 'app-child1',
   imports: [],
   templateUrl: './child1.component.html',
-  styleUrl: './child1.component.css'
+  styleUrl: './child1.component.css',
+  inputs: ['a'],
+  standalone: true
 })
 export class Child1Component {
-
+  a: any;
+  username: string = "Saikrishna";
 }

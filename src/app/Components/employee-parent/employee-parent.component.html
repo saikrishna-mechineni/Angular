@@ -1,0 +1,61 @@
+<p class="text-success">Employee CRUD Works!</p>
+
+<div class="border p-3 m-3 rounded shadow-sm">
+  <button class="btn btn-primary mb-3" (click)="openAddModal()">
+    Add Employee <fa-icon [icon]="faPlus"></fa-icon>
+  </button>
+
+  <app-employee-table
+    [employees]="employees"
+    [faEye]="faEye"
+    [faTrash]="faTrash"
+    (editEvent)="editEmployee($event)"
+    (deleteEvent)="deleteEmployee($event)">
+  </app-employee-table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="showModal" style="background-color: rgba(0, 0, 0, 0.4);">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ isReadOnly ? 'View Employee' : selectedEmployeeIndex !== null ? 'Edit Employee' : 'Add Employee' }}
+        </h5>
+        <button type="button" class="btn-close" (click)="showModal = false"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-2">
+            <label>ID</label>
+            <input type="number" class="form-control" [(ngModel)]="formData.id" name="id" [readonly]="isReadOnly" />
+          </div>
+          <div class="mb-2">
+            <label>Name</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.name" name="name" [readonly]="isReadOnly" />
+          </div>
+          <div class="mb-2">
+            <label>Department</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.department" name="department" [readonly]="isReadOnly" />
+          </div>
+          <div class="mb-2">
+            <label>Position</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.position" name="position" [readonly]="isReadOnly" />
+          </div>
+          <div class="mb-2">
+            <label>Salary</label>
+            <input type="number" class="form-control" [(ngModel)]="formData.salary" name="salary" [readonly]="isReadOnly" />
+          </div>
+          <div class="mb-2">
+            <label>Email</label>
+            <input type="email" class="form-control" [(ngModel)]="formData.email" name="email" [readonly]="isReadOnly" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="showModal = false">Close</button>
+        <button *ngIf="!isReadOnly" class="btn btn-success" (click)="saveEmployee()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

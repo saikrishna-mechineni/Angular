@@ -1,0 +1,16 @@
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.modal-content {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
