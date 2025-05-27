@@ -7,18 +7,20 @@ import { ParentComponent } from '../parent/parent.component';
 import { EmployeeParentComponent } from '../employee-parent/employee-parent.component';
 import { Math1Component } from '../math1/math1.component';
 import { Math2Component } from '../math2/math2.component';
+import { HttpCrudComponent } from '../http-crud/http-crud.component';
 
 
 @Component({
   selector: 'app-body',
   imports: [
-    EmployeeCrudComponent,
-    PipesComponent,
-    PipesOrdinalComponent,
-    ParentComponent,
-    EmployeeParentComponent,
-    Math1Component,
-    Math2Component
+    // EmployeeCrudComponent,
+    // PipesComponent,
+    // PipesOrdinalComponent,
+    // ParentComponent,
+    // EmployeeParentComponent,
+    // Math1Component,
+    // Math2Component,
+    HttpCrudComponent
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'

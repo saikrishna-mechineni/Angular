@@ -1,0 +1,23 @@
+{
+  "employees": [
+    {
+      "id": "efdd",
+      "firstName": "sanjay",
+      "lastName": "samantra",
+      "email": "sanjay@gmail.com",
+      "gender": "male",
+      "sal": "6500"
+    },
+    {
+      "id": "77fd"
+    },
+    {
+      "id": "93fd",
+      "firstName": "Sai",
+      "lastName": "Krishna",
+      "email": "sk.krishna@gmail.com",
+      "gender": "male",
+      "sal": "500000"
+    }
+  ]
+}

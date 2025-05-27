@@ -1,0 +1,61 @@
+<div class="container mt-4" style="max-width: 900px; margin: auto;">
+
+    <h2 class="text-center mb-4">Employee CRUD App</h2>
+  
+    <!-- Snackbar -->
+    <div *ngIf="showSnackbar" class="alert alert-success text-center">
+      {{ snackbarMessage }}
+    </div>
+  
+    <!-- Add Form -->
+    <div class="card p-3 mb-4">
+      <h5>Add Employee</h5>
+      <div class="d-flex gap-2">
+        <input [(ngModel)]="newEmployee.id" placeholder="ID" type="number" class="form-control" />
+        <input [(ngModel)]="newEmployee.name" placeholder="Name" class="form-control" />
+        <input [(ngModel)]="newEmployee.email" placeholder="Email" class="form-control" />
+        <button (click)="addEmployee()" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  
+    <!-- Edit Form -->
+    <div *ngIf="editEmployee" class="card p-3 mb-4 border-warning">
+      <h5>Edit Employee</h5>
+      <div class="d-flex gap-2">
+        <input [(ngModel)]="editEmployee.id" class="form-control" type="number" disabled />
+        <input [(ngModel)]="editEmployee.name" class="form-control" />
+        <input [(ngModel)]="editEmployee.email" class="form-control" />
+        <button (click)="updateEmployee()" class="btn btn-success">Update</button>
+        <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  
+    <!-- Table -->
+    <div *ngIf="!loading" class="card">
+      <table class="table table-bordered table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employees">
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+            <td>
+              <button (click)="startEdit(emp)" class="btn btn-sm btn-warning me-2">Edit</button>
+              <button (click)="deleteEmployee(emp.id)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center p-3">
+      <p>Loading...</p>
+    </div>
+  
+  </div>
+  
