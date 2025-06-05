@@ -8,19 +8,25 @@ import { EmployeeParentComponent } from '../employee-parent/employee-parent.comp
 import { Math1Component } from '../math1/math1.component';
 import { Math2Component } from '../math2/math2.component';
 import { HttpCrudComponent } from '../http-crud/http-crud.component';
+import { ObservableComponent } from '../observable/observable.component';
+import { PracticeComponent } from '../practice/practice.component';
+import { FormDemo1Component } from '../form-demo1/form-demo1.component';
 
 
 @Component({
   selector: 'app-body',
   imports: [
-    // EmployeeCrudComponent,
+    EmployeeCrudComponent,
     // PipesComponent,
     // PipesOrdinalComponent,
     // ParentComponent,
     // EmployeeParentComponent,
     // Math1Component,
     // Math2Component,
-    HttpCrudComponent
+    // HttpCrudComponent,
+    // ObservableComponent
+    // PracticeComponent
+    // FormDemo1Component
   ],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'

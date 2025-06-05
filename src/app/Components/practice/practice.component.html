@@ -1,0 +1,79 @@
+<div class="div">
+
+    <div class="m-2">
+        <p>Enter the Names</p>
+        <div><input [(ngModel)]="firstName" /></div>
+        <div><input [(ngModel)]="lastName" /></div>
+        <div>The full Name is {{firstName + ' ' + lastName}}</div>
+    </div>
+
+</div>
+
+
+<div>
+
+    <div class="p-2 m-2">
+        <input #mybox1 />
+        <input #mybox2 />
+        <button class="btn btn-primary" (click)="addition(mybox1.value,mybox2.value)">Add</button>
+        <div>Addition result is {{result}}</div>
+    </div>
+
+</div>
+
+<div>
+    <div class="p-2 m-2">
+        <p>Enter the Characters</p>
+        <input type="text" [(ngModel)]="inputText" (ngModelChange)="updateRemainingChars()" />
+        <div>The remaining Characters are {{ remChars }}</div>
+      </div>
+
+</div>
+
+<div class="border p-2 m-2">
+    <h4>Country List Dropdown</h4>
+    <select>
+        @for(country of country_list; track $index){
+            <option>{{country}}</option>
+        }
+    </select>
+</div>
+
+
+<div class="border p-2 m-2">
+    <h4>Country List Datalist</h4>
+    <input list = "country_list">
+    <datalist id="country_list">
+        @for(country of country_list; track $index){
+            <option>{{country}}</option>
+        }
+    </datalist>
+</div>
+
+<div class="border p-2 m-2">
+    <table class="table table-bordered table-striped">
+      <thead style="background-color: #4CAF50; color: white;">
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>department</th>
+                <th>email</th>
+                <th>position</th>
+                <th>salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(emp of employees; track $index){
+                <tr>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.department}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.position}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

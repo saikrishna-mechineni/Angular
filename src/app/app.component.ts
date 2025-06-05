@@ -11,8 +11,8 @@ import { CategoriesComponent } from './Components/categories/categories.componen
   imports: [NavbarComponent,
     BodyComponent,
     FooterComponent,
-    CarouselComponent,
-    CategoriesComponent
+    // CarouselComponent,
+    // CategoriesComponent
 
   ],
   templateUrl: './app.component.html',

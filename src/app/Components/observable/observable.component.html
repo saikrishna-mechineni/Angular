@@ -1,0 +1,7 @@
+<p>Observable Demo Works!</p>
+
+<!-- Live Clock Display -->
+<h2 *ngIf="time$ | async as time">Current Time: {{ time }}</h2>
+
+<!-- Interval Observable Output -->
+<h2 *ngIf="numPublisher | async as num">Counter: {{ num }}</h2>
